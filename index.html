@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeLingo – Learn C++, Python, Java</title>
+  <meta name="description" content="CodeLingo: Duolingo‑style CS1 learning app for C++, Python, and Java. Client‑only, fast, and accessible." />
+
+  <!-- Google Fonts: Poppins (UI) + Space Mono (code) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-theme="light">
+  <a class="skip-link" href="#app">Skip to content</a>
+
+  <header class="top-nav" role="navigation" aria-label="Primary">
+    <a class="logo" href="#home" aria-label="CodeLingo Home">
+      <span class="logo-mark" aria-hidden="true">
+        <!-- Inline SVG logo: chat bubble + code brackets -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect x="1.25" y="1.25" width="25.5" height="20.5" rx="6" stroke="#00C385" stroke-width="2.5"/>
+          <path d="M7 24.5L12 19.5H20C23 19.5 25.5 17 25.5 14V8" stroke="#00C385" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M9.5 10L7.25 12.25L9.5 14.5" stroke="#062F54" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18.5 10L20.75 12.25L18.5 14.5" stroke="#062F54" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="logo-text">CodeLingo</span>
+    </a>
+
+    <nav class="tabs" aria-label="Primary tabs">
+      <a href="#home" class="tab" data-nav="home">Home</a>
+      <a href="#courses" class="tab" data-nav="courses">Courses</a>
+      <a href="#profile" class="tab" data-nav="profile">Profile</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="themeToggle" class="icon-btn" aria-pressed="false" aria-label="Toggle theme">
+        <span class="icon" aria-hidden="true">
+          <!-- Moon/Sun dual icon -->
+          <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 2V4M12 20V22M4 12H2M22 12H20M5 5L3.8 3.8M20.2 20.2L19 19M19 5L20.2 3.8M3.8 20.2L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1111.21 3c.2 0 .39.02.59.04A7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <!-- Home View -->
+    <section id="view-home" class="view" data-route="home" aria-labelledby="home-heading">
+      <div class="container hero">
+        <div class="hero-copy">
+          <h1 id="home-heading">Learn to code like a pro</h1>
+          <p class="sub">Bite‑size lessons in C++, Python, and Java. Keep a streak, earn XP, and master CS1 fundamentals.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-primary" id="continueBtn">
+              <span class="btn-label">Continue lesson</span>
+            </button>
+            <button class="btn btn-ghost" id="pickPathBtn">Pick a path</button>
+          </div>
+          <div class="stats-row" role="group" aria-label="Your progress summary">
+            <div class="stat-pill" id="stat-streak" aria-live="polite">🔥 0‑day streak</div>
+            <div class="stat-pill" id="stat-xp" aria-live="polite">⭐ 0 XP</div>
+            <div class="stat-pill" id="stat-hearts" aria-live="polite">❤️ 5</div>
+          </div>
+        </div>
+        <div class="hero-card" id="lastUnitCard" aria-live="polite">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <div class="container pick-path">
+        <h2>Pick a path</h2>
+        <div class="course-tiles" role="list">
+          <button class="course-tile" data-course="cpp" role="listitem" aria-label="C++ course">
+            <span class="tile-badge">C++</span>
+            <span class="tile-title">C++ Foundations</span>
+          </button>
+          <button class="course-tile" data-course="python" role="listitem" aria-label="Python course">
+            <span class="tile-badge">Python</span>
+            <span class="tile-title">Python Basics</span>
+          </button>
+          <button class="course-tile" data-course="java" role="listitem" aria-label="Java course">
+            <span class="tile-badge">Java</span>
+            <span class="tile-title">Java Essentials</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses View -->
+    <section id="view-courses" class="view" data-route="courses" aria-labelledby="courses-heading" hidden>
+      <div class="container">
+        <h2 id="courses-heading">Courses</h2>
+        <div class="course-tiles" role="list">
+          <button class="course-tile" data-course="cpp" role="listitem" aria-label="Open C++ Unit Map">
+            <span class="tile-badge">C++</span>
+            <span class="tile-title">C++ Foundations</span>
+          </button>
+          <button class="course-tile" data-course="python" role="listitem" aria-label="Open Python Unit Map">
+            <span class="tile-badge">Python</span>
+            <span class="tile-title">Python Basics</span>
+          </button>
+          <button class="course-tile" data-course="java" role="listitem" aria-label="Open Java Unit Map">
+            <span class="tile-badge">Java</span>
+            <span class="tile-title">Java Essentials</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unit Map View -->
+    <section id="view-map" class="view" data-route="map" aria-labelledby="map-heading" hidden>
+      <div class="container">
+        <div class="view-head">
+          <button class="btn btn-ghost" id="backToCourses">← Back</button>
+          <h2 id="map-heading">Unit Map</h2>
+        </div>
+        <div id="unitGrid" class="unit-grid" role="list">
+          <!-- unit cards populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Lesson Player View -->
+    <section id="view-lesson" class="view" data-route="lesson" aria-labelledby="lesson-heading" hidden>
+      <div class="container lesson">
+        <div class="lesson-top">
+          <button class="btn btn-ghost" id="backToMap" aria-label="Back to Unit Map">←</button>
+          <div class="progress-wrap" aria-label="Lesson progress">
+            <div class="progress-bar" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="hearts" id="hearts" aria-live="polite" role="status"></div>
+          </div>
+        </div>
+
+        <h2 id="lesson-heading">Lesson</h2>
+        <div id="exerciseContainer" class="exercise" role="group" aria-live="polite">
+          <!-- exercise content injected here -->
+        </div>
+
+        <div class="lesson-actions">
+          <button class="btn btn-ghost" id="hintBtn" aria-describedby="hintNote">Hint</button>
+          <span id="hintNote" class="hint-note" aria-live="polite"></span>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost" id="skipBtn">Skip</button>
+          <button class="btn btn-primary" id="checkBtn">
+            <span class="btn-label">Check</span>
+          </button>
+        </div>
+
+        <!-- Mobile bottom action bar -->
+        <div class="action-bar">
+          <button class="btn btn-ghost" id="skipBtnMobile">Skip</button>
+          <button class="btn btn-primary" id="checkBtnMobile"><span class="btn-label">Check</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile View -->
+    <section id="view-profile" class="view" data-route="profile" aria-labelledby="profile-heading" hidden>
+      <div class="container profile">
+        <h2 id="profile-heading">Your Profile</h2>
+        <div class="profile-cards">
+          <div class="profile-card" role="group" aria-label="Streak and XP">
+            <div class="profile-stat"><span>🔥 Streak</span><strong id="profileStreak">0 days</strong></div>
+            <div class="profile-stat"><span>⭐ XP</span><strong id="profileXP">0</strong></div>
+          </div>
+          <div class="profile-card" role="group" aria-label="Badges">
+            <h3>Badges</h3>
+            <div id="badges" class="badges">
+              <!-- badges populated by JS -->
+            </div>
+          </div>
+          <div class="profile-card" role="group" aria-label="Settings">
+            <h3>Settings</h3>
+            <div class="settings-row">
+              <label class="switch">
+                <input type="checkbox" id="themeToggleSwitch" aria-label="Dark mode" />
+                <span>Dark mode</span>
+              </label>
+            </div>
+            <div class="settings-row">
+              <button class="btn btn-ghost" id="resetProgressBtn">Reset progress</button>
+              <button class="btn" id="refillHeartsBtn">Refill hearts</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="confetti-container" aria-hidden="true"></div>
+  <div id="toast" role="status" aria-live="polite" class="toast" hidden></div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
